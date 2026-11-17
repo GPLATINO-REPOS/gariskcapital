@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solicitud de crédito médico — GA Risk Capital</title>
+<meta name="description" content="Solicita tu crédito médico. Nuestro equipo te contactará en menos de 24 horas.">
+<link rel="icon" href="/assets/favicon.png">
+<link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap nav">
+    <a href="/" class="logo"><img src="/assets/logo.png" alt="GA Risk Capital"></a>
+    <button class="menu-btn" aria-label="Abrir menú" aria-expanded="false">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h16"/></svg>
+    </button>
+    <ul>
+      <li><a href="/#nosotros">Quiénes somos</a></li>
+      <li><a href="/#servicios">Servicios</a></li>
+      <li><a href="/#soluciones">Soluciones</a></li>
+      <li><a href="/solicitud-credito/">Crédito</a></li>
+      <li><a href="/#contacto">Contacto</a></li>
+      <li><a class="btn btn-gold" href="https://calendly.com/jcmartorell-gplatino/30min" target="_blank" rel="noopener">Agendar cita</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+<section class="hero" style="padding:80px 0 40px">
+  <div class="wrap">
+    <div class="eyebrow">Crédito médico</div>
+    <h1 style="font-size:clamp(2rem,4.4vw,3.2rem)">Tu salud es lo primero</h1>
+    <p class="lead">Completa tu solicitud y nuestro equipo te contactará en menos de 24 horas para darte una respuesta.</p>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap" style="max-width:860px">
+    <form class="f" data-formspree data-ok="Gracias. Recibimos tu solicitud y te contactaremos en menos de 24 horas.">
+      <input type="hidden" name="_subject" value="Nueva solicitud de crédito médico — gariskcapital.com">
+      <input type="hidden" name="formulario" value="Solicitud de crédito médico">
+
+      <fieldset>
+        <legend>Datos personales</legend>
+        <div><label for="s-nombre">Nombre completo *</label><input id="s-nombre" name="nombre" required autocomplete="name" placeholder="Juan Pérez"></div>
+        <div class="row2">
+          <div><label for="s-email">Email *</label><input id="s-email" name="email" type="email" required autocomplete="email" placeholder="juan@email.com"></div>
+          <div><label for="s-tel">Teléfono *</label><input id="s-tel" name="telefono" type="tel" required autocomplete="tel" placeholder="+52 55 1234 5678"></div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Situación financiera</legend>
+        <div class="row2">
+          <div><label for="s-ocu">Ocupación</label>
+            <select id="s-ocu" name="ocupacion">
+              <option value="">Seleccionar</option>
+              <option>Empleado(a)</option><option>Independiente</option><option>Empresario(a)</option>
+              <option>Profesionista</option><option>Jubilado(a)</option><option>Otro</option>
+            </select></div>
+          <div><label for="s-ing">Ingreso mensual aproximado</label>
+            <select id="s-ing" name="ingreso_mensual">
+              <option value="">Seleccionar</option>
+              <option>Menos de $15,000</option><option>$15,000 - $30,000</option><option>$30,000 - $60,000</option>
+              <option>$60,000 - $100,000</option><option>Más de $100,000</option>
+            </select></div>
+        </div>
+        <div><label for="s-pago">¿Con qué pagarías el crédito?</label>
+          <select id="s-pago" name="fuente_de_pago">
+            <option value="">Seleccionar</option>
+            <option>Nómina</option><option>Negocio propio</option><option>Rentas</option>
+            <option>Pensión / jubilación</option><option>Otro ingreso</option>
+          </select></div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Información del crédito</legend>
+        <div class="row2">
+          <div><label for="s-monto">Monto solicitado (MXN) *</label><input id="s-monto" name="monto_mxn" required inputmode="numeric" placeholder="$50,000"></div>
+          <div><label for="s-prop">Propósito del crédito *</label>
+            <select id="s-prop" name="proposito" required>
+              <option value="">Seleccionar propósito</option>
+              <option>Procedimiento médico</option><option>Cirugía</option><option>Tratamiento continuo</option>
+              <option>Hospitalización</option><option>Procedimiento dental</option><option>Procedimiento estético</option><option>Otro</option>
+            </select></div>
+        </div>
+        <div><label for="s-clin">Clínica u hospital (opcional)</label><input id="s-clin" name="clinica" placeholder="Nombre de la clínica"></div>
+        <div>
+          <label>Garantía disponible *</label>
+          <div class="opts">
+            <label class="opt"><input type="radio" name="garantia" value="Inmobiliaria" required><span>Inmobiliaria<small>Propiedad o terreno</small></span></label>
+            <label class="opt"><input type="radio" name="garantia" value="Automóvil"><span>Automóvil<small>Vehículo como respaldo</small></span></label>
+            <label class="opt"><input type="radio" name="garantia" value="Nómina"><span>Nómina<small>Ingresos fijos</small></span></label>
+            <label class="opt"><input type="radio" name="garantia" value="Aval"><span>Aval<small>Persona que garantice</small></span></label>
+            <label class="opt"><input type="radio" name="garantia" value="Otro"><span>Otro tipo<small>Otra garantía</small></span></label>
+          </div>
+        </div>
+        <p style="color:var(--muted);font-size:.88rem">Si cuentas con tu reporte de Buró de Crédito, te lo pediremos cuando te contactemos para agilizar la evaluación.</p>
+      </fieldset>
+
+      <fieldset>
+        <legend>Privacidad y consentimiento</legend>
+        <label class="check"><input type="checkbox" name="acepta_aviso_privacidad" value="Sí" required><span>He leído el <a href="/aviso-privacidad/" target="_blank">Aviso de Privacidad</a>. *</span></label>
+        <label class="check"><input type="checkbox" name="consentimiento_datos_financieros_y_salud" value="Sí" required><span>Otorgo mi consentimiento expreso para el tratamiento de mis datos financieros y patrimoniales y de los datos relacionados con mi salud (propósito médico del crédito), con el único fin de evaluar mi solicitud. *</span></label>
+        <label class="check"><input type="checkbox" name="acepta_transferencia_instituciones" value="Sí" required><span>Acepto que mis datos se transfieran a la institución financiera que evalúe y, en su caso, otorgue el crédito. *</span></label>
+      </fieldset>
+
+      <div class="form-msg" role="status"></div>
+      <button class="btn btn-gold" type="submit">Solicitar crédito</button>
+      <p style="color:var(--muted);font-size:.82rem">Tu información es confidencial y se usará únicamente para evaluar tu solicitud. Enviar esta solicitud no implica la aprobación del crédito; la aprobación está sujeta a evaluación crediticia.</p>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="foot">
+      <img src="/assets/logo.png" alt="GA Risk Capital">
+      <nav>
+        <a href="/#servicios">Servicios</a>
+        <a href="/aviso-privacidad/">Aviso de privacidad</a>
+        <a href="/#aviso-legal">Aviso legal</a>
+      </nav>
+    </div>
+    <div class="legal"><p>© <span id="year">2026</span> GA Risk Capital. Todos los derechos reservados.</p></div>
+  </div>
+</footer>
+<script src="/main.js"></script>
+</body>
+</html>
