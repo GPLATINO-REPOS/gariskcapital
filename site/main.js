@@ -59,3 +59,41 @@
     img.addEventListener('error', function () { fix(img); });
   });
 })();
+
+// Indicadores de mercado (Banxico) — si falla, la sección queda oculta
+(function () {
+  var sec = document.getElementById('indicadores');
+  var grid = document.getElementById('ticker-grid');
+  if (!sec || !grid) return;
+  var fmt = function (v, d) {
+    return v.toLocaleString('es-MX', { minimumFractionDigits: d, maximumFractionDigits: d });
+  };
+  fetch('/api/indicadores', { headers: { Accept: 'application/json' } })
+    .then(function (r) { return r.ok ? r.json() : null; })
+    .then(function (j) {
+      if (!j || !j.ok || !j.items || !j.items.length) return;
+      grid.innerHTML = '';
+      j.items.forEach(function (it) {
+        var el = document.createElement('div');
+        el.className = 'tk';
+        var unidad = it.unidad === '%' ? '%' : '';
+        var sufijo = it.unidad === '%' ? '' : '<small>' + it.unidad + '</small>';
+        var varTxt = '';
+        if (typeof it.variacion === 'number') {
+          var cls = it.variacion > 0 ? 'up' : (it.variacion < 0 ? 'down' : '');
+          varTxt = ' · <span class="' + cls + '">' + (it.variacion > 0 ? '+' : '') + fmt(it.variacion, 2) + '%</span>';
+        }
+        el.innerHTML = '<div class="l"></div><div class="v"></div><div class="d"></div>';
+        el.querySelector('.l').textContent = it.label;
+        el.querySelector('.v').innerHTML = fmt(it.valor, it.decimales) + unidad + sufijo;
+        var f = String(it.fecha).replace(/[<>&]/g, '');
+        var m = f.match(/^(\d{2})\/(\d{2})\/(\d{4})$/);
+        var meses = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+        if (it.key === 'inflacion' && m) f = meses[parseInt(m[2], 10) - 1] + ' ' + m[3];
+        el.querySelector('.d').innerHTML = (it.key === 'inflacion' ? 'Dato de ' : 'Dato al ') + f + varTxt;
+        grid.appendChild(el);
+      });
+      sec.hidden = false;
+    })
+    .catch(function () {});
+})();

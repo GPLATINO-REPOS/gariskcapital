@@ -1,14 +1,16 @@
 #!/bin/bash
-# Publica el nuevo sitio de GA Risk Capital en Netlify.
-# 1) Baja del sitio ACTUAL el logo y las imágenes (antes de reemplazarlo).
-# 2) Publica la carpeta site/ en producción.
+# Publica el sitio de GA Risk Capital en Netlify (gariskcapital.com).
+# 1) Si faltan, baja el logo y las imágenes del sitio publicado.
+# 2) Publica site/ y la función de indicadores en producción.
 set -e
-cd "$(dirname "$0")/site"
+cd "$(dirname "$0")"
 for f in logo.png favicon.png apple-touch-icon.png about.jpg; do
-  if [ ! -s "assets/$f" ]; then
+  if [ ! -s "site/assets/$f" ]; then
     echo "Bajando $f ..."
-    curl -fsSL -o "assets/$f" "https://gariskcapital.com/$f"
+    curl -fsSL -o "site/assets/$f" "https://gariskcapital.com/assets/$f" \
+      || curl -fsSL -o "site/assets/$f" "https://gariskcapital.com/$f"
   fi
 done
-echo "Imágenes listas:"; ls -la assets
-netlify deploy --dir . --site 182dc4f7-1959-4735-941d-e9c919736eb6 --prod --no-build
+echo "Imágenes listas:"; ls -la site/assets
+npx --yes --cache /tmp/npm-ga netlify-cli deploy --dir site --functions netlify/functions \
+  --site 182dc4f7-1959-4735-941d-e9c919736eb6 --prod --no-build
